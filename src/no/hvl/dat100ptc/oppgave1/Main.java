@@ -4,7 +4,9 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		// TODO
+		GPSPoint point = new GPSPoint(5, 6.0, 7.5, 9.0);
+		
+		System.out.println(point.toString());
 		
 	}
 

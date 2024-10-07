@@ -39,7 +39,7 @@ public class GPSData {
 	public void print() {
 		System.out.println("===== GPS Data - Start =====");
 		for (int i=0; i<antall; i++) {
-			System.out.println((i+1)+ " " + gpspoints[i].toString());
+			System.out.println((i+1)+ ": " + gpspoints[i].toString());
 		}
 		System.out.println("===== GPS Data - Slutt =====");
 		 

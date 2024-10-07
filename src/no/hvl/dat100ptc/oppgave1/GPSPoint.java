@@ -61,7 +61,7 @@ public class GPSPoint {
 	
 	public String toString() {
 		
-		String str = time + " (" + latitude + ", " + longitude + ") " + elevation + "\n";
+		String str = time + " (" + latitude + "," + longitude + ") " + elevation + "\n";
 		
 		return str;
 		

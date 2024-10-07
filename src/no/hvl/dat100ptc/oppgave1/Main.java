@@ -13,6 +13,7 @@ public class Main {
 		point.setTime(2);
 		
 		System.out.println(point.getTime());
+		
 	}
 
 }

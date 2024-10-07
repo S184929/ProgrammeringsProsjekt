@@ -7,7 +7,11 @@ public class Main {
 	
 	public static void main(String[] args) {
 
-		// TODO
+			String timestr = "2017-08-13T08:52:26.000";
+        
+			int result = GPSDataConverter.toSeconds(timestr);
+        
+			System.out.println("Antall sekunder er: " + result);
 		
 	}
 }

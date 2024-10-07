@@ -31,18 +31,17 @@ public class GPSData {
 
 	public boolean insert(String time, String latitude, String longitude, String elevation) {
 
-		GPSPoint gpspoint;
-
-		throw new UnsupportedOperationException(TODO.method());
-
-		// TODO 
+		GPSPoint gpspoint=GPSDataConverter.convert(time, latitude, longitude, elevation);
+		return insertGPS(gpspoint);
 		
 	}
 
 	public void print() {
-
-		throw new UnsupportedOperationException(TODO.method());
-
-		// TODO 
+		System.out.println("===== GPS Data - Start =====");
+		for (int i=0; i<antall; i++) {
+			System.out.println((i+1)+ " " + gpspoints[i].toString());
+		}
+		System.out.println("===== GPS Data - Slutt =====");
+		 
 	}
 }

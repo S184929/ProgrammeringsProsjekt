@@ -13,8 +13,7 @@ public class Main {
 			final String ELEVSTR = "61.9";
                 
 			System.out.println("Antall sekunder er: " + GPSDataConverter.toSeconds(TIMESTR) + "\n");
-			
-			
+						
 			 System.out.println(GPSDataConverter.convert(TIMESTR, LATSTR, LONGSTR, ELEVSTR));
 		
 	}

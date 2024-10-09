@@ -10,6 +10,9 @@ public class GPSUtils {
 	
 	public static void main(String[] args) {
 	
+		System.out.println(formatTime(9));
+		System.out.println(formatTime(82));
+		System.out.println(formatTime(60 * 60 * 3 + 60 * 2 + 1));
 		
 		
 	}
@@ -118,15 +121,7 @@ public class GPSUtils {
 		String formatTid = String.format("%10s", tidStreng);
 		
 		return formatTid;
-		
-//		String timestr;
-//		String TIMESEP = ":";
-//
-//		throw new UnsupportedOperationException(TODO.method());
-//		
-//		// TODO 
-		
-		
+			
 		
 	}
 	

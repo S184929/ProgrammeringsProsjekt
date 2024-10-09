@@ -14,18 +14,17 @@ public class GPSUtils {
 		System.out.println(formatTime(60 * 60 * 3 + 60 * 2 + 1));
 
 		System.out.println(formatDouble(1.346));
-		
+
 		GPSPoint g1 = new GPSPoint(0,60.385390, 5.217217,0);
 		GPSPoint g2 = new GPSPoint(10,60.376988, 5.227082,0);
 
+		// Kall på speed-metoden for å beregne hastighet
+		double hastighet = speed(g1, g2);
 
-        // Kall på speed-metoden for å beregne hastighet
-        double hastighet = speed(g1, g2);
-
-        System.out.println("Hastighet er: " + String.format("%.0f", hastighet) + " m/s");
+		// Skriv ut hastigheten fra main
+		System.out.println("Hastighet er: " + String.format("%.0f", hastighet) + " m/s");
+		
 	}
-
-
 
 	public static double findMax(double[] da) {
 
@@ -94,10 +93,10 @@ public class GPSUtils {
 		double a = compute_a(lat1, lat2, latDifferanse, longDifferanse);
 
 		double c = compute_c(a);
-		
-		double distanse = R*c;
-		System.out.println("avstanden mellom punktene er: " + distanse);
-		
+
+		double distanse = R * c;
+		System.out.println("Avstanden mellom punktene er: " + String.format("%.0f", distanse) + " meter");
+
 		return distanse;
 
 	}
@@ -114,15 +113,11 @@ public class GPSUtils {
 	}
 
 	public static double speed(GPSPoint gpspoint1, GPSPoint gpspoint2) {
-		
-		
 
 		double distanse = distance(gpspoint1, gpspoint2);
-		
-		double tid=1;
-		
-		double hastighet=distanse/tid;
-		
+		double tid = 13.2;
+
+		double hastighet = distanse / tid;
 		
 		return hastighet;
 

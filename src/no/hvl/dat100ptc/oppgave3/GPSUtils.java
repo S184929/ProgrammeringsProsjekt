@@ -7,6 +7,11 @@ import no.hvl.dat100ptc.oppgave1.GPSPoint;
 
 public class GPSUtils {
 
+	
+	
+	
+	// HUSK å fjerne main før innlevering!!
+	
 	public static void main(String[] args) {
 
 		System.out.println(formatTime(9));
@@ -96,15 +101,15 @@ public class GPSUtils {
 		double c = compute_c(a);
 		
 		double distanse = R*c;
-		System.out.println("avstanden mellom punktene er: " + distanse);
+		System.out.println("Avstanden mellom punktene er: " + distanse);
 		
 		return distanse;
 
 	}
 
 	private static double compute_a(double phi1, double phi2, double deltaphi, double deltadelta) {
-		return Math.pow(Math.sinh(deltaphi / 2), 2)
-				+ (Math.cos(phi1) * Math.cos(phi2) * Math.pow(Math.sin(deltadelta), 2));
+		return Math.pow(Math.sin(deltaphi / 2), 2)
+				+ (Math.cos(phi1) * Math.cos(phi2) * Math.pow(Math.sin(deltadelta / 2), 2));
 
 	}
 

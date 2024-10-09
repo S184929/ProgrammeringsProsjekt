@@ -1,11 +1,18 @@
 package no.hvl.dat100ptc.oppgave3;
 
 import static java.lang.Math.*;
+import static java.lang.Object.*;
 
 import no.hvl.dat100ptc.oppgave1.GPSPoint;
 import no.hvl.dat100ptc.TODO;
 
 public class GPSUtils {
+	
+	public static void main(String[] args) {
+	
+		
+		
+	}
 
 	public static double findMax(double[] da) {
 
@@ -101,12 +108,25 @@ public class GPSUtils {
 
 	public static String formatTime(int secs) {
 
-		String timestr;
-		String TIMESEP = ":";
-
-		throw new UnsupportedOperationException(TODO.method());
+		int timer = secs / 3600;
+		int minutter = (secs % 3600) / 60;
+		int sekunder = secs % 60;
 		
-		// TODO 
+		
+		String tidStreng = String.format("%02d:%02d:%02d", timer, minutter, sekunder);
+		
+		String formatTid = String.format("%10s", tidStreng);
+		
+		return formatTid;
+		
+//		String timestr;
+//		String TIMESEP = ":";
+//
+//		throw new UnsupportedOperationException(TODO.method());
+//		
+//		// TODO 
+		
+		
 		
 	}
 	

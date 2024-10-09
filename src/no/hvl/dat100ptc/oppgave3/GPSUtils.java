@@ -2,6 +2,7 @@ package no.hvl.dat100ptc.oppgave3;
 
 import static java.lang.Math.*;
 import static java.lang.Object.*;
+import java.util.Locale;
 
 import no.hvl.dat100ptc.oppgave1.GPSPoint;
 import no.hvl.dat100ptc.TODO;
@@ -13,6 +14,8 @@ public class GPSUtils {
 		System.out.println(formatTime(9));
 		System.out.println(formatTime(82));
 		System.out.println(formatTime(60 * 60 * 3 + 60 * 2 + 1));
+		
+		System.out.println(formatDouble(1.346));
 		
 		
 	}
@@ -129,12 +132,11 @@ public class GPSUtils {
 
 	public static String formatDouble(double d) {
 
-		String str;
-
+		String tallStreng = String.format(Locale.ENGLISH, "%.2f", d);
 		
-		throw new UnsupportedOperationException(TODO.method());
+		String formatTall = String.format("%" + TEXTWIDTH + "s", tallStreng);
 		
-		// TODO
+		return formatTall;
 		
 	}
 }

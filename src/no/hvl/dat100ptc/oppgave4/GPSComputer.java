@@ -54,7 +54,6 @@ public class GPSComputer {
 	}
 
 	public int totalTime() {
-
 		// TODO
 		throw new UnsupportedOperationException(TODO.method());
 		
@@ -65,8 +64,15 @@ public class GPSComputer {
 
 		double[] speeds = new double[gpspoints.length-1];
 		
-		// TODO
-		throw new UnsupportedOperationException(TODO.method());
+		for (int i=0; i<gpspoints.length; i++) {
+			
+			double distanse = GPSUtils.distance(gpspoints[i-1], gpspoints[i]);
+			
+			double time = gpspoints[i].getTime()-gpspoints[i-1].getTime();
+			
+			speeds[i-1] =distanse/time;
+		}
+		return speeds;
 		
 	}
 	

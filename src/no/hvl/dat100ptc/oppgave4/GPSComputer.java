@@ -58,14 +58,15 @@ public class GPSComputer {
 	
 	public int totalTime() {
 
-		int totalTime = 0;
 		
-		for (int i=0; i<gpspoints.length; i++) {
-			
-			totalTime += gpspoints.getTime(gpspoints[i], gpspoints[i + 1]);
-
-		}
-		return totalTime;
+		if (gpspoints.length < 2) {
+		return 0;
+	}
+		
+	int startTime = gpspoints[0].getTime();
+	int endTime = gpspoints[gpspoints.length - 1].getTime();
+	
+	return endTime - startTime;
 	}
 
 	public double[] speeds() {

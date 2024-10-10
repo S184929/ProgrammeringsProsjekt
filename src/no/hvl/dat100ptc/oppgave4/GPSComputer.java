@@ -133,7 +133,7 @@ public class GPSComputer {
 		} else if (mph>=16 && mph<=20) {
 			met=12.0;
 		} else  {
-			met=20.0;
+			met=16.0;
 				
 		}
 		//konverter timer til sekunder
@@ -155,7 +155,7 @@ public class GPSComputer {
 			//beregner tiden mellom to gpspunkt
 			double tidiSekunder =gpspoints[i].getTime() -gpspoints[i-1].getTime();
 			
-			if (tidiSekunder>0) {
+			if (tidiSekunder<=0) {
 				continue;
 			}
 			
@@ -170,7 +170,7 @@ public class GPSComputer {
 			
 			totalKcal +=kcal;
 		}
-		System.out.println(totalKcal);
+		
 		return totalKcal;
 		
 

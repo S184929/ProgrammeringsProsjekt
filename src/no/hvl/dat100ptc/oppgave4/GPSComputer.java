@@ -115,13 +115,30 @@ public class GPSComputer {
 
 	public double kcal(double weight, int secs, double speed) {
 
-		double kcal;
-
 		double met = 0;
-		double speedmph = speed * MS;
+		double mph = speed * MS;
+		
+		if (mph>10) {
+			met=4.0;
+		} else if (mph>=10 && mph<=12) {
+			met=6.0;
+		} else if (mph>=12 && mph<=14) {
+			met=8.0;
+		} else if (mph>=14 && mph<=16) {
+			met=10;
+		} else if (mph>=16 && mph<=20) {
+			met=12;
+		} else  {
+			met=20;
+				
+		}
+		//konverter timer til sekunder
+		double timer = secs/3600;
+		
+		double kcal = met*weight*timer;
+		
 
-		// TODO
-		throw new UnsupportedOperationException(TODO.method());
+		return kcal;
 
 	}
 

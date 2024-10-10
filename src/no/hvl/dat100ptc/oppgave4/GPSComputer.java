@@ -55,13 +55,18 @@ public class GPSComputer {
 		return totalElevation;
 		
 	}
-
+	
 	public int totalTime() {
-		// TODO
-		throw new UnsupportedOperationException(TODO.method());
+
+		int totalTime = 0;
 		
+		for (int i=0; i<gpspoints.length; i++) {
+			
+			totalTime += gpspoints.getTime(gpspoints[i], gpspoints[i + 1]);
+
+		}
+		return totalTime;
 	}
-		
 
 	public double[] speeds() {
 

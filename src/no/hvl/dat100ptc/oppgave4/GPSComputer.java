@@ -125,15 +125,15 @@ public class GPSComputer {
 		} else if (mph>=12 && mph<=14) {
 			met=8.0;
 		} else if (mph>=14 && mph<=16) {
-			met=10;
+			met=10.0;
 		} else if (mph>=16 && mph<=20) {
-			met=12;
+			met=12.0;
 		} else  {
-			met=20;
+			met=20.0;
 				
 		}
 		//konverter timer til sekunder
-		double timer = secs/3600;
+		double timer = secs/3600.0;
 		
 		double kcal = met*weight*timer;
 		
@@ -144,10 +144,31 @@ public class GPSComputer {
 
 	public double totalKcal(double weight) {
 
-		double totalkcal = 0;
-
-		// TODO
-		throw new UnsupportedOperationException(TODO.method());
+		double totalKcal = 0.0;
+		
+		for (int i=1; i<gpspoints.length; i++) {
+			
+			//beregner tiden mellom to gpspunkt
+			double tidiSekunder =gpspoints[i].getTime() -gpspoints[i-1].getTime();
+			
+			if (tidiSekunder>0) {
+				continue;
+			}
+			
+			
+			double distanse =GPSUtils.distance(gpspoints[i-1], gpspoints[i]);
+			
+			//beregne fart i meter per sekund
+			double speedInMps=distanse/tidiSekunder;
+			
+			
+			double kcal =kcal(weight,(int) tidiSekunder, speedInMps);
+			
+			totalKcal +=kcal;
+		}
+		System.out.println(totalKcal);
+		return totalKcal;
+		
 
 	}
 

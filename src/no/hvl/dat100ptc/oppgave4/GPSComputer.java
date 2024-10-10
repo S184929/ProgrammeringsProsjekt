@@ -39,11 +39,17 @@ public class GPSComputer {
 
 	public double totalElevation() {
 
-		double elevation = 0;
-
-		throw new UnsupportedOperationException(TODO.method());
+		double totalElevation = 0;
 		
-		// TODO 
+		for (int i=0; i<gpspoints.length; i++) {
+			double elevationDifferanse=gpspoints[i].getElevation()-gpspoints[i-1].getElevation();
+			
+			if (elevationDifferanse>0) {
+				totalElevation+=elevationDifferanse;
+			}
+			
+		}
+		return totalElevation;
 		
 	}
 

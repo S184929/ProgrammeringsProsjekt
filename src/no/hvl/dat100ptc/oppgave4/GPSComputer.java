@@ -8,11 +8,10 @@ import no.hvl.dat100ptc.oppgave3.GPSUtils;
 
 import no.hvl.dat100ptc.TODO;
 
-
 public class GPSComputer {
-	
+
 	private GPSPoint[] gpspoints;
-	
+
 	public GPSComputer(String filename) {
 
 		GPSData gpsdata = GPSDataFileReader.readGPSFile(filename);
@@ -23,18 +22,18 @@ public class GPSComputer {
 	public GPSComputer(GPSPoint[] gpspoints) {
 		this.gpspoints = gpspoints;
 	}
-	
+
 	public GPSPoint[] getGPSPoints() {
 		return this.gpspoints;
 	}
-	
+
 	public double totalDistance() {
 
 		double distance = 0;
 
 		for (int i = 0; i < gpspoints.length - 1; i++) {
-			distance += GPSUtils.distance(gpspoints[i], gpspoints[i+1]);
-			
+			distance += GPSUtils.distance(gpspoints[i], gpspoints[i + 1]);
+
 		}
 		return distance;
 
@@ -43,60 +42,68 @@ public class GPSComputer {
 	public double totalElevation() {
 
 		double totalElevation = 0;
-		
+
 		for (int i = 1; i < gpspoints.length; i++) {
-			double elevationDifferanse = gpspoints[i].getElevation() - gpspoints[i-1].getElevation();
-			
+			double elevationDifferanse = gpspoints[i].getElevation() - gpspoints[i - 1].getElevation();
+
 			if (elevationDifferanse > 0) {
 				totalElevation += elevationDifferanse;
 			}
-			
+
 		}
 		return totalElevation;
-		
+
 	}
 
 	public int totalTime() {
 		// TODO
 		throw new UnsupportedOperationException(TODO.method());
-		
+
 	}
-		
 
 	public double[] speeds() {
+		double[] speeds = new double[gpspoints.length - 1];
 
-		double[] speeds = new double[gpspoints.length-1];
-		
-		for (int i=0; i<gpspoints.length; i++) {
+		for (int i = 0; i < gpspoints.length; i++) {
+
+			double distanse = GPSUtils.distance(gpspoints[i - 1], gpspoints[i]);		 
+
+			double time = gpspoints[i].getTime() - gpspoints[i - 1].getTime();
+
+			if (time > 0) {
+				double speed = distanse / time;
+
+				speeds[i - 1] = Math.round(speed);
+				
+				System.out.println("Gjennomsnitt hastigheten mellom to punkter er: " + speed);
+				
+			} else {
+				speeds[i - 1] = 0;
+			}
 			
-			double distanse = GPSUtils.distance(gpspoints[i-1], gpspoints[i]);
-			
-			double time = gpspoints[i].getTime()-gpspoints[i-1].getTime();
-			
-			speeds[i-1] =distanse/time;
 		}
+		
 		return speeds;
-		
+
 	}
-	
+
 	public double maxSpeed() {
-		
+
 		double maxspeed = 0;
-		
-		// TODO 
+
+		// TODO
 		throw new UnsupportedOperationException(TODO.method());
-	
+
 	}
 
 	public double averageSpeed() {
 
 		double average = 0;
-		
+
 		// TODO
 		throw new UnsupportedOperationException(TODO.method());
-		
-	}
 
+	}
 
 	// conversion factor m/s to miles per hour (mps)
 	public static final double MS = 2.23;
@@ -105,30 +112,30 @@ public class GPSComputer {
 
 		double kcal;
 
-		double met = 0;		
+		double met = 0;
 		double speedmph = speed * MS;
 
-		// TODO 
+		// TODO
 		throw new UnsupportedOperationException(TODO.method());
-		
+
 	}
 
 	public double totalKcal(double weight) {
 
 		double totalkcal = 0;
 
-		// TODO 
+		// TODO
 		throw new UnsupportedOperationException(TODO.method());
-		
+
 	}
-	
+
 	private static double WEIGHT = 80.0;
-	
+
 	public void displayStatistics() {
 
-		// TODO 
+		// TODO
 		throw new UnsupportedOperationException(TODO.method());
-		
+
 	}
 
 }

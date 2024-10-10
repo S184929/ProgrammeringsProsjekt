@@ -102,12 +102,16 @@ public class GPSComputer {
 	}
 
 	public double averageSpeed() {
-
-		double average = 0;
-
-		// TODO
-		throw new UnsupportedOperationException(TODO.method());
-
+	    
+		double totalDistance = totalDistance();
+	    int totalTime = totalTime();
+	    
+	    if (totalTime > 0) {
+	       
+	        return Math.round((totalDistance / totalTime) * 10.0) / 10.0;
+	    } else {
+	        return 0; 
+	    }
 	}
 
 	// conversion factor m/s to miles per hour (mps)

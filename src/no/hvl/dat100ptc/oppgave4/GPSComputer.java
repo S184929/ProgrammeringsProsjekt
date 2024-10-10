@@ -96,10 +96,21 @@ public class GPSComputer {
 
 		double maxspeed = 0;
 
-		// TODO
-		throw new UnsupportedOperationException(TODO.method());
+		 for (int i = 1; i < gpspoints.length; i++) {
+		        double distance = GPSUtils.distance(gpspoints[i - 1], gpspoints[i]); 
+		        double time = gpspoints[i].getTime() - gpspoints[i - 1].getTime(); 
+		        
+		        if (time > 0) { 
+		            double speed = distance / time; 
 
-	}
+		            if (speed > maxspeed) {
+		                maxspeed = speed; 
+		            }
+		        }
+		    }
+
+		    return Math.round(maxspeed * 10.0) / 10.0; 
+		}
 
 	public double averageSpeed() {
 	    

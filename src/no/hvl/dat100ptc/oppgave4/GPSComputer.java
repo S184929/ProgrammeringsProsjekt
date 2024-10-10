@@ -69,16 +69,16 @@ public class GPSComputer {
 	public double[] speeds() {
 		double[] speeds = new double[gpspoints.length - 1];
 
-		for (int i = 0; i < gpspoints.length; i++) {
+		for (int i = 1; i < gpspoints.length; i++) {
 
 			double distanse = GPSUtils.distance(gpspoints[i - 1], gpspoints[i]);		 
 
 			double time = gpspoints[i].getTime() - gpspoints[i - 1].getTime();
 
 			if (time > 0) {
-				double speed = distanse / time;
+				double speed = (distanse / time);
 
-				speeds[i - 1] = Math.round(speed);
+				speeds[i - 1] = Math.round(speed*10.0)/10.0;
 				
 				System.out.println("Gjennomsnitt hastigheten mellom to punkter er: " + speed);
 				

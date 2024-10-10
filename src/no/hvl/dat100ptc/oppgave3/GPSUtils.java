@@ -99,7 +99,7 @@ public class GPSUtils {
 		double c = compute_c(a);
 		
 		double distanse = R*c;
-		System.out.println("Avstanden mellom punktene er: " + distanse);
+		System.out.println("Avstanden mellom punktene er: %.0f" + distanse);
 		
 		return distanse;
 
@@ -122,11 +122,9 @@ public class GPSUtils {
 
 		double distanse = distance(gpspoint1, gpspoint2);
 		
-		double tid = 1;
+		double tid = 10;
 		
 		double hastighet = distanse / tid;
-		
-		
 		return hastighet;
 
 	}

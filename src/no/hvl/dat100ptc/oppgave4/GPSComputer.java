@@ -8,6 +8,7 @@ import no.hvl.dat100ptc.oppgave3.GPSUtils;
 
 import no.hvl.dat100ptc.TODO;
 
+
 public class GPSComputer {
 	
 	private GPSPoint[] gpspoints;
@@ -31,9 +32,11 @@ public class GPSComputer {
 
 		double distance = 0;
 
-		throw new UnsupportedOperationException(TODO.method());
-
-		// TODO
+		for (int i = 0; i < gpspoints.length - 1; i++) {
+			distance += GPSUtils.distance(gpspoints[i], gpspoints[i+1]);
+			
+		}
+		return distance;
 
 	}
 
@@ -41,11 +44,11 @@ public class GPSComputer {
 
 		double totalElevation = 0;
 		
-		for (int i=0; i<gpspoints.length; i++) {
-			double elevationDifferanse=gpspoints[i].getElevation()-gpspoints[i-1].getElevation();
+		for (int i = 1; i < gpspoints.length; i++) {
+			double elevationDifferanse = gpspoints[i].getElevation() - gpspoints[i-1].getElevation();
 			
-			if (elevationDifferanse>0) {
-				totalElevation+=elevationDifferanse;
+			if (elevationDifferanse > 0) {
+				totalElevation += elevationDifferanse;
 			}
 			
 		}

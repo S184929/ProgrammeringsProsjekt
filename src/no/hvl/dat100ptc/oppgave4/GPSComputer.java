@@ -54,12 +54,26 @@ public class GPSComputer {
 		return totalElevation;
 
 	}
-
+	
 	public int totalTime() {
+<<<<<<< HEAD
 		// TODO
 		throw new UnsupportedOperationException(TODO.method());
 
 	}
+=======
+
+		
+		if (gpspoints.length < 2) {
+		return 0;
+	}
+		
+	int startTime = gpspoints[0].getTime();
+	int endTime = gpspoints[gpspoints.length - 1].getTime();
+	
+	return endTime - startTime;
+	}
+>>>>>>> 7a214ee1a277a5a8305530e473ace6d5142efd81
 
 	public double[] speeds() {
 		double[] speeds = new double[gpspoints.length - 1];

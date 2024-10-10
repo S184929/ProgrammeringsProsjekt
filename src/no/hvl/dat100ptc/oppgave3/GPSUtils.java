@@ -118,8 +118,6 @@ public class GPSUtils {
 
 	public static double speed(GPSPoint gpspoint1, GPSPoint gpspoint2) {
 		
-		
-
 		double distanse = distance(gpspoint1, gpspoint2);
 		
 		double tid = 10;

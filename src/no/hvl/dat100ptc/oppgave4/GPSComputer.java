@@ -133,7 +133,7 @@ public class GPSComputer {
 		double met = 0;
 		double mph = speed * MS;
 
-		if (mph > 10) {
+		if (mph < 10) {
 			met = 4.0;
 		} else if (mph >= 10 && mph <= 12) {
 			met = 6.0;
@@ -157,9 +157,7 @@ public class GPSComputer {
 	}
 
 	public double totalKcal(double weight) {
-
-		weight = 80;
-
+		
 		double totalKcal = 0.0;
 
 		for (int i = 1; i < gpspoints.length; i++) {

@@ -59,6 +59,6 @@ public class ShowSpeed extends EasyGraphics {
 		
 		int averageY = ybase - (int) averageSpeed; // Y-posisjonen til gjennomsnittslinjen
 	    setColor(0, 255, 0); // Grønn farge for gjennomsnittslinjen
-	    drawLine(MARGIN, averageY, MARGIN + 2 * speeds.length, averageY);
+//	    drawLine(MARGIN, averageY, MARGIN + 2 * speeds.length, averageY);
 	}
 }

@@ -82,13 +82,13 @@ public class ShowRoute extends EasyGraphics {
 			
 		}
 		
-		double lastLong = gpspoints[gpspoints.length - 1].getLongitude();
-	    double lastLat = gpspoints[gpspoints.length - 1].getLatitude();
-	    
-	    int lastX = MARGIN + (int) ((lastLong - minlon) * xstep);
-	    int lastY = ybase - (int) ((lastLat - minlat) * ystep);
-	    
-	    fillCircle(lastX, lastY, 3);
+//		double lastLong = gpspoints[gpspoints.length - 1].getLongitude();
+//	    double lastLat = gpspoints[gpspoints.length - 1].getLatitude();
+//	    
+//	    int lastX = MARGIN + (int) ((lastLong - minlon) * xstep);
+//	    int lastY = ybase - (int) ((lastLat - minlat) * ystep);
+//	    
+//	    fillCircle(lastX, lastY, 3);
 		
 	}
 
@@ -99,8 +99,28 @@ public class ShowRoute extends EasyGraphics {
 		setColor(0,0,0);
 		setFont("Courier",12);
 		
-		// TODO
-		throw new UnsupportedOperationException(TODO.method());
+		 // Startposisjon for statistikken
+	    int xPosition = MARGIN;
+	    int yPosition = MARGIN;
+	    int lineSpacing = 20; // Avstand mellom linjene
+
+	    // Hent statistikk fra gpscomputer-objektet
+	    int totalTime = gpscomputer.totalTime();
+	    double totalDistance = gpscomputer.totalDistance() / 1000; // Konverter til km
+	    double totalElevation = gpscomputer.totalElevation();
+	    double maxSpeed = gpscomputer.maxSpeed();
+	    double averageSpeed = gpscomputer.averageSpeed();
+	    double totalKcal = gpscomputer.totalKcal(80.0); // Anta en vekt på 80 kg
+
+	    // Tegn statistikken i vinduet ved hjelp av drawString
+	    setColor(0, 0, 0); // Sett fargen til svart for teksten
+	    drawString("=== Statistikk ===", xPosition, yPosition);
+	    drawString("Total tid: " + GPSUtils.formatTime(totalTime), xPosition, yPosition + lineSpacing);
+	    drawString("Total distanse: " + String.format("%.2f", totalDistance) + " km", xPosition, yPosition + 2 * lineSpacing);
+	    drawString("Total stigning: " + String.format("%.2f", totalElevation) + " m", xPosition, yPosition + 3 * lineSpacing);
+	    drawString("Maks hastighet: " + String.format("%.2f", maxSpeed) + " km/t", xPosition, yPosition + 4 * lineSpacing);
+	    drawString("Gjennomsnittlig hastighet: " + String.format("%.2f", averageSpeed) + " km/t", xPosition, yPosition + 5 * lineSpacing);
+	    drawString("Forbrente kalorier: " + String.format("%.2f", totalKcal) + " kcal", xPosition, yPosition + 6 * lineSpacing);
 		
 	}
 

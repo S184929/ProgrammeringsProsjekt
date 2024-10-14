@@ -39,10 +39,26 @@ public class ShowSpeed extends EasyGraphics {
 	
 	public void showSpeedProfile(int ybase) {
 		
-		int x = MARGIN,y;
-	
-		// TODO
-		throw new UnsupportedOperationException(TODO.method());
+				double[] speeds = gpscomputer.speeds();
 		
+		for (int i =0; i<speeds.length; i++) {
+			speeds[i]=speeds[i]*3.6; //konverter til km/t
+			
+		}
+		double averageSpeed=gpscomputer.averageSpeed()*3.6;
+		
+		int x = MARGIN,y;
+		
+		for (int i =0; i<speeds.length; i++) {
+			int barHeight= (int) speeds[i]; //høyden på gjennomsnitt baren er lik gjennomsnitt hastigheten i km/t
+			setColor(0,0,225);
+			drawLine(x, ybase, x, ybase-barHeight);
+			x+=2; //øk med to pixler hver stolpe
+			
+		}
+		
+		int averageY = ybase - (int) averageSpeed; // Y-posisjonen til gjennomsnittslinjen
+	    setColor(0, 255, 0); // Grønn farge for gjennomsnittslinjen
+	    drawLine(MARGIN, averageY, MARGIN + 2 * speeds.length, averageY);
 	}
 }

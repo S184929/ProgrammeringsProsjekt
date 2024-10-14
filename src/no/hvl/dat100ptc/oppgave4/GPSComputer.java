@@ -208,6 +208,7 @@ public class GPSComputer {
 		System.out.printf("Average speed  :   %8.2f km/t%n", averageSpeed);
 		System.out.printf("Energy         :   %8.2f kcal%n", totalKcal);
 		System.out.println("==============================================");
+		System.out.println();
 
 
 	}

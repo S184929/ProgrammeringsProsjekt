@@ -66,23 +66,29 @@ public class ShowRoute extends EasyGraphics {
 
 		setColor(0,0,225);
 		
-		for (int i = 0; i < gpspoints.length; i++) {
+		for (int i = 0; i < gpspoints.length - 1; i++) {
 			double long1 = gpspoints[i].getLongitude();
-			double lat1 = gpspoints[i].getLongitude();
+			double lat1 = gpspoints[i].getLatitude();
 			double long2 = gpspoints[i+1].getLongitude();
-			double lat2 = gpspoints[i+1].getLongitude();
+			double lat2 = gpspoints[i+1].getLatitude();
 			
 			int x1 = MARGIN + (int) ((long1 - minlon) * xstep);
 			int y1 = ybase - (int) ((lat1 - minlat) * ystep);
 			int x2 = MARGIN + (int) ((long2 - minlon) * xstep);
 			int y2 = ybase - (int) ((lat2 - minlat) * ystep);
 			
-			
 			drawLine(x1, y1, x2, y2);
-			
 			fillCircle(x1, y1, 3);
 			
 		}
+		
+		double lastLong = gpspoints[gpspoints.length - 1].getLongitude();
+	    double lastLat = gpspoints[gpspoints.length - 1].getLatitude();
+	    
+	    int lastX = MARGIN + (int) ((lastLong - minlon) * xstep);
+	    int lastY = ybase - (int) ((lastLat - minlat) * ystep);
+	    
+	    fillCircle(lastX, lastY, 3);
 		
 	}
 

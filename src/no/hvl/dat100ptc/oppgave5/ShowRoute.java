@@ -81,16 +81,8 @@ public class ShowRoute extends EasyGraphics {
 			fillCircle(x1, y1, 3);
 			
 		}
-		
-//		double lastLong = gpspoints[gpspoints.length - 1].getLongitude();
-//	    double lastLat = gpspoints[gpspoints.length - 1].getLatitude();
-//	    
-//	    int lastX = MARGIN + (int) ((lastLong - minlon) * xstep);
-//	    int lastY = ybase - (int) ((lastLat - minlat) * ystep);
-//	    
-//	    fillCircle(lastX, lastY, 3);
-		
 	}
+
 
 	public void showStatistics() {
 
@@ -102,7 +94,7 @@ public class ShowRoute extends EasyGraphics {
 		 // Startposisjon for statistikken
 	    int xPosition = MARGIN;
 	    int yPosition = MARGIN;
-	    int lineSpacing = 20; // Avstand mellom linjene
+	    int lineSpacing = 20;
 
 	    // Hent statistikk fra gpscomputer-objektet
 	    int totalTime = gpscomputer.totalTime();
@@ -113,7 +105,7 @@ public class ShowRoute extends EasyGraphics {
 	    double totalKcal = gpscomputer.totalKcal(80.0); // Anta en vekt på 80 kg
 
 	    // Tegn statistikken i vinduet ved hjelp av drawString
-	    setColor(0, 0, 0); // Sett fargen til svart for teksten
+	    setColor(0, 0, 0);
 	    drawString("=== Statistikk ===", xPosition, yPosition);
 	    drawString("Total tid: " + GPSUtils.formatTime(totalTime), xPosition, yPosition + lineSpacing);
 	    drawString("Total distanse: " + String.format("%.2f", totalDistance) + " km", xPosition, yPosition + 2 * lineSpacing);
@@ -126,9 +118,31 @@ public class ShowRoute extends EasyGraphics {
 
 	public void replayRoute(int ybase) {
 
-		// TODO 
-		throw new UnsupportedOperationException(TODO.method());
-		
+		// Sett hastigheten for bevegelsen
+	    setSpeed(10);
+
+	    // Sett fargen til sirkelen
+	    setColor(0, 0, 255);
+
+	    // Tegn en sirkel på startpunktet og hent sirkelens ID
+	    double startLongitude = gpspoints[0].getLongitude();
+	    double startLatitude = gpspoints[0].getLatitude();
+	    int startX = MARGIN + (int) ((startLongitude - minlon) * xstep);
+	    int startY = ybase - (int) ((startLatitude - minlat) * ystep);
+	    int circleRadius = 5; 
+
+	    int circleID = fillCircle(startX, startY, circleRadius);
+
+	    // Flytt sirkelen langs ruten ved å iterere gjennom GPS-punktene
+	    for (int i = 1; i < gpspoints.length; i++) {
+	        double nextLongitude = gpspoints[i].getLongitude();
+	        double nextLatitude = gpspoints[i].getLatitude();
+	        int nextX = MARGIN + (int) ((nextLongitude - minlon) * xstep);
+	        int nextY = ybase - (int) ((nextLatitude - minlat) * ystep);
+
+	        // Flytt sirkelen til neste posisjon
+	        moveCircle(circleID, nextX, nextY);
+	    }
 	}
 
 }

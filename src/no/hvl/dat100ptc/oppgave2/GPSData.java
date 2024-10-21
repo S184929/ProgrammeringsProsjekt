@@ -37,11 +37,12 @@ public class GPSData {
 	}
 
 	public void print() {
-		System.out.println("===== GPS Data - Start =====");
-		for (int i=0; i<antall; i++) {
-			System.out.println((i+1)+ ": " + gpspoints[i].toString());
-		}
-		System.out.println("===== GPS Data - Slutt =====");
-		 
+	    System.out.println("===== GPS Data - Start =====");
+	    for (int i = 0; i < antall; i++) {
+	        
+	        GPSPoint point = gpspoints[i]; 
+	        System.out.println((i + 1) + "  " + "(" + point.getLongitude() + ", " + point.getLatitude() + ")" + "  " + point.getElevation());
+	    }
+	    System.out.println("===== GPS Data - Slutt =====");
 	}
 }
